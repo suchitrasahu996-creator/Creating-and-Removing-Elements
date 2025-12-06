@@ -20,18 +20,21 @@
         transform: 0.3s ease;
         background: pink;
         color: white;
+        transition: 0.3s ease;
       }
+
       button:hover {
         background: pink;
-        transform: scale(1.05);
       }
       .btnEdit {
         background: orange;
-        transform: scale(1.05);
       }
       .btnEdit:hover {
         background: red;
         transform: scale(1.05);
+      }
+      .btnDel {
+        background: red;
       }
       .btnDel:hover {
         background: red;
@@ -41,40 +44,40 @@
   </head>
   <body>
     <div class="todo-container">
-        //adding and removing Paragraphs
-      <button onclick="addparagraph()">Add Paragraph</button>
-      <button onclick="addparagraph()">Remove last Paragraph</button>
-     
-     //all Paragraphs will appear
+      <button onclick="addParagraph()">Add Paragraph</button>
+      <button onclick="removeLastParagraph()">Remove last Paragraph</button>
+
       <div id="paragraphlist"></div>
     </div>
 
     <script>
-        //store all paragraphs
-      let Paragraphs = [];
+      //store all paragraphs
+      let paragraphs = [];
 
       // To add new paragraph
-      function addparagraph() {
-        Paragraphs.push("This is a new paragraph");
+      function addParagraph() {
+        paragraphs.push("This is a new paragraph");
         render();
       }
       // to remove the last paragraph
-      function Removelastparagraph() {
+      function removeLastParagraph() {
         let list = document.getElementById("paragraphlist");
-       // to remove last element from list
-        list.removeChild(list.lastElementChild);
-        Paragraphs.pop();
+        // to remove last element from list
+        if (list.lastElementChild) {
+          list.removeChild(list.lastElementChild);
+          paragraphs.pop();
+        }
       }
 
       //to update the display area
-      function rendrer() {
+      function render() {
         let list = document.getElementById("paragraphlist");
         list.innerHTML = "";
-//creating the tags for each paragraph
-        Paragraphs.forEach((paragraph, index) => {
+        //creating the tags for each paragraph
+        paragraphs.forEach((paragraph, index) => {
           let paragraphElement = document.createElement("p");
-          paragraphElement.textcontext = Paragraph;
-// add parargraph
+          paragraphElement.textContent = paragraph;
+          // add parargraph
           list.appendChild(paragraphElement);
         });
       }
