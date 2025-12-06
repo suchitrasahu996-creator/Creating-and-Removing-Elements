@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating and Removing Elements</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: white;
+        padding: 20px;
+      }
+      button {
+        width: auto;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transform: 0.3s ease;
+        background: pink;
+        color: white;
+      }
+      button:hover {
+        background: pink;
+        transform: scale(1.05);
+      }
+      .btnEdit {
+        background: orange;
+        transform: scale(1.05);
+      }
+      .btnEdit:hover {
+        background: red;
+        transform: scale(1.05);
+      }
+      .btnDel:hover {
+        background: red;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todo-container">
+        //adding and removing Paragraphs
+      <button onclick="addparagraph()">Add Paragraph</button>
+      <button onclick="addparagraph()">Remove last Paragraph</button>
+     
+     //all Paragraphs will appear
+      <div id="paragraphlist"></div>
+    </div>
+
+    <script>
+        //store all paragraphs
+      let Paragraphs = [];
+
+      // To add new paragraph
+      function addparagraph() {
+        Paragraphs.push("This is a new paragraph");
+        render();
+      }
+      // to remove the last paragraph
+      function Removelastparagraph() {
+        let list = document.getElementById("paragraphlist");
+       // to remove last element from list
+        list.removeChild(list.lastElementChild);
+        Paragraphs.pop();
+      }
+
+      //to update the display area
+      function rendrer() {
+        let list = document.getElementById("paragraphlist");
+        list.innerHTML = "";
+//creating the tags for each paragraph
+        Paragraphs.forEach((paragraph, index) => {
+          let paragraphElement = document.createElement("p");
+          paragraphElement.textcontext = Paragraph;
+// add parargraph
+          list.appendChild(paragraphElement);
+        });
+      }
+    </script>
+  </body>
+</html>
